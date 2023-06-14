@@ -1,0 +1,53 @@
+{% load static%}
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Detecting Phishing Website</title>
+<link rel="stylesheet" type="text/css" href="{% static 'style/style.css'%}" title="style" />
+</head>
+<body>
+ <div id="main">
+ <div id="header">
+ <div id="logo">
+ <div id="logo_text">
+ <!-- class="logo_colour", allows you to change the colour of the text -->
+ <h1><a href="login.html">Detecting Phishing Website </a></h1>
+ </div>
+ </div>
+ <div id="menubar">
+ <ul id="menu">
+ <li><a href="/index">Home</a></li>
+ <li><a href="/login">Login</a></li>
+ <li><a href="/registration">Registration</a></li>
+ <li><a href="/testurl">Test URL</a></li>
+ </ul>
+ </div>
+ </div>
+ <div id="content_header"></div>
+ <div id="site_content">
+ <div id="content">
+ 
+ <form name="form" action="/search/">
+ {% csrf_token %}
+ <div class="form_settings">
+ <p>
+ <span>Search Here:</span><input class="contact" type="text" 
+name="keyword"/>
+ </p>
+ <p style="padding-top: 15px">
+ <span>&nbsp;</span><input class="submit" type="submit" 
+name="contact_submitted" value="Find" />
+ </p>
+ </div>
+ </form>
+ {% for post in posts %}
+ <h2>Title : {{ post.title }}</h2>
+ Description : {{ post.title }} <br/><br/>
+ URL : <a href="{{ post.url }}" target="_blank">{{ post.url }}</a>
+ <br><hr><hr>
+ {% endfor %}
+ </div>
+ </div>
+ </div>
+</body>
+</html>
